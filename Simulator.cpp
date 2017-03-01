@@ -102,7 +102,7 @@ void Simulator::toLeft()	{
 void Simulator::accelerate(){
 	cout << "-------------------------------------SPEED UP------------------------------------" <<  endl;
 	for(int i = 0; i <= 3; ++i){
-		String oldSpeed = motors[i].speed;	
+		int oldSpeed = motors[i].speed;	
 		if(motors[i].speed < 91){
 			motors[i].speed += 10;
 		} else {
@@ -119,7 +119,7 @@ void Simulator::accelerate(){
 void Simulator::slowDown(){
 	cout << "-------------------------------------SLOW SOWN-----------------------------------" <<  endl;
 	for(int i = 0; i <= 3; ++i)		{
-		String oldSpeed = motors[i].speed;		
+		int oldSpeed = motors[i].speed;		
 		if(motors[i].speed > 10)
 			motors[i].speed -= 10;
 		cout << "softPwmWrite --> Motor n°" << i << " PWM[" 

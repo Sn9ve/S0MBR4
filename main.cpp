@@ -28,20 +28,20 @@ int main(){
 			case 'b':
 				controller.processAction(-50,-50);
 				break;
-			case 't':
+			/*case 't':
 				cout << "la distance entre le robot est un obstacle est de " 
 				<< controller.robot.proceesDistance(1) << endl;
-				break;
+				break;*/
 			case 'i':
 				controller.launchServer();
 				cout << "server offline " << endl;
 				break;
 			case 'q':
 				controller.processAction(0,0);
-				controller.shutdownServer();
+				//controller.shutdownServer();
 				return 0;
 		}
 	}
-	controller.shutdownServer();
+	//controller.shutdownServer();
 	return 0;
 }
