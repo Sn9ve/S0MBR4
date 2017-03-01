@@ -4,12 +4,12 @@
 class Controller{
 	
 	public:
-		Robot robot;
+		//Robot robot;
 		Simulator dumbRob;
 		SocketServer ss;
 		
 		Controller();
-		void processAction(int x, int y);
+		//void processAction(int x, int y);
 		void processSimulation(int x, int y);
 		int launchServer();
 };
