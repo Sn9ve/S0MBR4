@@ -42,26 +42,46 @@ void Controller::processAction(int x, int y){
 			robot.changeSpeed(ordinate, ordinate, ordinate, ordinate);
 	}
 	robot.go();
+}
+
+void Controller::processSimulation(int x, int y){
+	int ordinate = abs(y);
+	int abscissa = abs(x);	
+	int turnover = sqrt(abs(x)*abs(y));
 	
+	//si le joystick est au point mort le robot n'avancera donc pas meme pour tourner
+	dumbRob.reset();
+	if(y == 0){	
+		if(x > 0){
+			dumbRob.changeSpeed(abscissa, abscissa, abscissa, abscissa);
+			dumbRob.toRight();
+		} else if (x < 0) {
+			dumbRob.changeSpeed(abscissa, abscissa, abscissa, abscissa);
+			dumbRob.toLeft();
+		} else {
+			dumbRob.stop();
+		}
+	} else {
+		//sinon si la vitesse est supérieur à 0 on avance
+		if(y > 0)
+			dumbRob.toFront();
+		else
+			dumbRob.toBack();
+		
+		//si x>0 alors on tourne à droite
+		if(x > 0)	
+			dumbRob.changeSpeed((turnover / 2), turnover, (turnover / 2), turnover);			
+		else if (x < 0)
+			dumbRob.changeSpeed(turnover, (turnover / 2), turnover, (turnover / 2));
+		else
+			dumbRob.changeSpeed(ordinate, ordinate, ordinate, ordinate);
+	}
+	dumbRob.move();
 }
 
-int Controller::initCommunication(){
-	ss.sock = ss.init_socket();
-	return ss.sock;
-}
-
-int Controller::acceptClient(){
-	ss.clientSock = ss.add_client(ss.sock);
-	return ss.clientSock;
-}
-
-void Controller::trade(int length){
-	std::cout << "trying to connect";
-	char* buffer = ss.readSocket(length);
-	Controller::processAction(buffer[0], buffer[1]);
-}
-void Controller::shutdownServer(){
-	ss.closeSocket();
+int Controller::launchServer(){
+	ss.serverListener();
+	return 0;
 }
 
 

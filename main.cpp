@@ -11,8 +11,6 @@ int main(){
 	cout << "s --> Stop" << endl;
 	cout << "f --> Move Forward" << endl;
 	cout << "b --> Move Backward" << endl;	
-	cout << "a --> Accelerate" << endl;
-	cout << "d --> Slow down" << endl;
 	cout << "t --> Calculate a distance" << endl;
 	cout << "i --> start the server" << endl;
 	cout << "q --> Quit" << endl;
@@ -30,25 +28,13 @@ int main(){
 			case 'b':
 				controller.processAction(-50,-50);
 				break;
-			case 'a':
-				controller.robot.accelerate();
-				break;
-			case 'd':
-				controller.robot.slowDown();
-				break;
 			case 't':
 				cout << "la distance entre le robot est un obstacle est de " 
 				<< controller.robot.proceesDistance(1) << endl;
 				break;
 			case 'i':
-				if(controller.initCommunication() >= 0){
-					while(controller.acceptClient() >= 0){
-						cout << "Listening for command" << endl;
-						controller.trade(2);
-					}
-				}else 
-					cout << "error init connection" << endl;
-				cout << "pass the while";
+				controller.launchServer();
+				cout << "server offline " << endl;
 				break;
 			case 'q':
 				controller.processAction(0,0);
