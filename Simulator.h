@@ -14,7 +14,7 @@
 enum{	AvG, AvD, ArG, ArD	};
 enum{	front, back	};
 
-class Robot{
+class Simulator{
 	public:
 		Motor* motors;
 		Servo* servos;
