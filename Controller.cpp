@@ -9,13 +9,13 @@ Controller::Controller(){
 
 //supposons que nous avons un joystick qui renvoie sur un axe X la direction droite gauche compris entre -100 et 100
 //Et sur un axe y la direction avant arrière aussi compris entre -100 et 100 , pour indiquer la vitesse du robot
-/*void Controller::processAction(int x, int y){
+void Controller::processAction(int x, int y){
 	int ordinate = abs(y);
 	int abscissa = abs(x);	
 	int turnover = sqrt(abs(x)*abs(y));
 	
 	//si le joystick est au point mort le robot n'avancera donc pas meme pour tourner
-	robot.reset();
+	/*robot.reset();
 	if(y == 0){	
 		if(x > 0){
 			robot.changeSpeed(abscissa, abscissa, abscissa, abscissa);
@@ -41,8 +41,8 @@ Controller::Controller(){
 		else
 			robot.changeSpeed(ordinate, ordinate, ordinate, ordinate);
 	}
-	robot.go();
-}*/
+	robot.go();*/
+}
 
 void Controller::processSimulation(int x, int y){
 	int ordinate = abs(y);
