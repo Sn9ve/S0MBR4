@@ -4,7 +4,7 @@
 using namespace std;
 
 Controller::Controller(){	
-	
+
 }
 
 //supposons que nous avons un joystick qui renvoie sur un axe X la direction droite gauche compris entre -100 et 100
@@ -80,7 +80,7 @@ void Controller::processSimulation(int x, int y){
 }
 
 int Controller::launchServer(){
-	ss.serverListener();
+	serverListener();
 	return 0;
 }
 

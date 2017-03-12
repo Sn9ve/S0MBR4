@@ -1,12 +1,11 @@
 #include "Simulator.h"
-#include "SocketServer.h"
+#include "Server.h"
 
 class Controller{
 	
 	public:
 		//Robot robot;
 		Simulator dumbRob;
-		SocketServer ss;
 		
 		Controller();
 		void processAction(int x, int y);
